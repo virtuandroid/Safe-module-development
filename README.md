@@ -71,8 +71,8 @@ being registered more than once.
 **Don'ts** ❌:
 
 - Do not use thread-unsafe types such as `Boolean` when writing the hook registration guard  
-- Do not use class-specific variables, since `IXposedHookLoadPackage` may be created. 
-Instead, use a companion object or singleton object to store the hook state. 
+- Do not use class-specific variables, since `IXposedHookLoadPackage` may be re-created. 
+Instead, use a companion object or a singleton object to store the hook state. 
 
 ---
 
