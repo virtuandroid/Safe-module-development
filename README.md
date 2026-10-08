@@ -17,6 +17,8 @@ This is archived by hooking as few methods as possible, in only the targeted app
 while keeping the hooks performant. Below is a variety of more detailed guidelines useful  
 when developing Xposed hooks.
 
+---
+
 #### Use narrow hook scopes
 Avoid hooking excessive methods to accomplish your task. Hooks create new failure
 points and performance degradations. 
@@ -38,6 +40,8 @@ frequently and widely within all apps.
 - Do not use `XposedBridge.hookAllMethods()` or `XposedBridge.hookAllConstructors()`
 since they will hook excessive methods.
 
+---
+
 #### Check target package or process
 Modules can be loaded within any process, including your own 
 process. Creating hooks in unexpected apps or processes can lead 
@@ -53,6 +57,8 @@ to check the package name. Use the package name to ensure the module is loaded w
 
 - No not install hooks inside an unknown process
 
+---
+
 #### Create idempotent hooks
 The hook initialization function *may* be called multiple times during an app's lifecycle.
 It is therefore important to create guards to prevent the hooks from 
@@ -60,14 +66,15 @@ being registered more than once.
 
 **Do's** ✅:
 
-- Use Atomic guards such as `AtomicBoolean()` or `Mutex()` to ensure hook safety 
-regardless of threading.
+- Use Atomic guards such as `AtomicBoolean()`, `Mutex()` or `synchronized()` to ensure hook creation is only run once regardless of threading.
 
 **Don'ts** ❌:
 
 - Do not use thread-unsafe types such as `Boolean` when writing the hook registration guard  
 - Do not use class-specific variables, since `IXposedHookLoadPackage` may be created. 
 Instead, use a companion object or singleton object to store the hook state. 
+
+---
 
 #### Create lightweight hooks
 Hooks block the normal execution, and runs on the same thread as the hooked function.
@@ -86,6 +93,8 @@ reflection operations can be significant on often executed hooks
 
 - Do not use Java Threads to schedule heavy work. 
 Java Threads are expensive to use repeatedly.
+
+---
 
 #### Account for different Android and app configurations
 Method signatures and usage differs between Android versions 
@@ -108,6 +117,8 @@ The method signature can change at any time, which will invalidate the hook.
 - Do not rely on new Android APIs (it will prevent backwards compatibility)
 - Do not hook Android APIs (they can differ between devices)
 
+---
+
 #### Account for obfuscation
 Many Android apps use [r8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization)
 to optimize their compiled code. This effectively randomizes class and function names
@@ -121,6 +132,8 @@ hardcoding hooks for temporary class names (such as `adh.f`)
 
 **Don'ts** ❌:
 - Do not use class names to hook r8-optimized classes
+
+---
 
 #### Avoid storing references to large objects
 Android contains some large objects such as `Activity` and `Service`. 
@@ -138,6 +151,8 @@ lives during the entire application runtime, preventing leaks.
 **Don'ts** ❌:
 - Do not store temporary references
 - Do not store heavy references
+
+---
 
 #### Prefer Kotlin to Java during development
 Google has announced that future development will be "[Kotlin-first](https://developer.android.com/kotlin/first)".
