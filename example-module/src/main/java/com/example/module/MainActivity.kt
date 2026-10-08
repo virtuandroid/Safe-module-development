@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.virtualxposed.maliciousmodule.BuildConfig
 import com.example.module.ui.theme.MaliciousModuleTheme
 
 class MainActivity : ComponentActivity() {

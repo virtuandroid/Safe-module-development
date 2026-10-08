@@ -30,4 +30,4 @@ dependencyResolutionManagement {
 }
 
 include(":example-module")
-rootProject.name = "attacks"
+rootProject.name = "Example module"

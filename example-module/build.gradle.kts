@@ -4,17 +4,17 @@ plugins {
 }
 
 android {
-    namespace = "com.virtualxposed.maliciousmodule"
+    namespace = "com.example.module"
     compileSdk {
         version = release(37)
     }
 
     defaultConfig {
-        applicationId = "com.virtualxposed.maliciousmodule"
-        minSdk = 21
-        targetSdk = 37
+        applicationId = "com.example.module"
+        minSdk = 23 // 27 or lower
+        targetSdk = 37 // Latest version
         versionCode = 1
-        versionName = "2.0.3"
+        versionName = "1.0.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
