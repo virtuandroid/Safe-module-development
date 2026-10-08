@@ -66,7 +66,7 @@ being registered more than once.
 
 **Do's** ✅:
 
-- Use Atomic guards such as `AtomicBoolean()`, `Mutex()` or `synchronized()` to ensure hook creation is only run once regardless of threading.
+- Use Atomic guards such as `AtomicBoolean()`, `Mutex()` or `synchronized()` to ensure hook creation is only run once regardless of threading. An example is shown [here](https://github.com/virtuandroid/Safe-module-development/blob/caf23634fbb0a1c18bed4d02f0a930095e3355b3/example-module/src/main/java/com/example/module/XposedModule.kt#L21-L24).
 
 **Don'ts** ❌:
 
