@@ -13,8 +13,8 @@ many opportunities for poor performance, bugs and crashes.
 
 ### Safe module development guidelines
 The core idea when creating safe hooks is to introduce minimal changes to the hooked app. 
-This is archived by hooking as few methods as possible, in only the targeted apps, 
-while keeping the hooks performant. Below is a variety of more detailed guidelines useful  
+This is achived by hooking as few methods as possible, in only the targeted apps, 
+while keeping the hooks performant. Below is a variety of more detailed guidelines useful
 when developing Xposed hooks.
 
 ---
